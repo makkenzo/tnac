@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        player.rotation = transform.rotation;
         OffTabletMenu();
     }
 
@@ -27,8 +28,6 @@ public class CameraController : MonoBehaviour
         playerUI.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
-        transform.localRotation = Quaternion.identity;
-        player.rotation = transform.rotation;
     }
 
     private void Update()

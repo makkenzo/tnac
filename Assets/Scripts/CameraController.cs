@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Settings")]
     public float sensitivity = 150f;
+
+    [Header("Binds")]
     public Transform player;
     public GameObject tablet;
+    public CamSwitcher camSwitcher;
 
     [Header("UI")]
     public GameObject tabletUI;
@@ -39,6 +43,8 @@ public class CameraController : MonoBehaviour
                 isTabletOpen = false;
 
                 OffTabletMenu();
+
+                camSwitcher.TurnOffAllCameras();
             }
             return;
         }
@@ -65,6 +71,8 @@ public class CameraController : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     playerUI.SetActive(false);
                     tabletUI.SetActive(true);
+
+                    camSwitcher.cameras[0].gameObject.SetActive(true);
                 }
             }
         }

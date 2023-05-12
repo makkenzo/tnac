@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CameraController : MonoBehaviour
     [Header("UI")]
     public GameObject tabletUI;
     public GameObject playerUI;
+    public GameObject pauseUI;
 
     private float xRotation = 0f;
     private bool isTabletOpen = false;

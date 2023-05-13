@@ -13,7 +13,8 @@ public class Settings : MonoBehaviour
 
     public void FullScreenToggle()
     {
-        isFullScreen = !isFullScreen;
-        Screen.fullScreen = isFullScreen;
+        isFullScreen = Screen.fullScreen;
+        Screen.fullScreen = !isFullScreen;
+        Debug.Log(isFullScreen);
     }
 }

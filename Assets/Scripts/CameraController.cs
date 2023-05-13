@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
 
     private float xRotation = 0f;
     private bool isTabletOpen = false;
+    private bool isMenuOpen = false;
 
     private void Start()
     {
@@ -28,16 +29,19 @@ public class CameraController : MonoBehaviour
         OffTabletMenu();
     }
 
-    void OffTabletMenu()
-    {
-        tabletUI.SetActive(false);
-        playerUI.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Update()
     {
+        if (isMenuOpen)
+        {
+            TogglePauseMenu(true);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePauseMenu(false);
+                isMenuOpen = false;
+            }
+            return;
+        }
+
         if (isTabletOpen)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -60,6 +64,12 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         player.Rotate(Vector3.up * mouseX);
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isMenuOpen = true;
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = new Ray(transform.position, transform.forward);
@@ -78,5 +88,21 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void TogglePauseMenu(bool state)
+    {
+        pauseUI.SetActive(state);
+        isMenuOpen = state;
+
+        Cursor.lockState = state == false ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    private void OffTabletMenu()
+    {
+        tabletUI.SetActive(false);
+        playerUI.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

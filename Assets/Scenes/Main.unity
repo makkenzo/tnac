@@ -5959,6 +5959,7 @@ GameObject:
   - component: {fileID: 1163650465}
   - component: {fileID: 1163650464}
   - component: {fileID: 1163650462}
+  - component: {fileID: 1163650466}
   m_Layer: 0
   m_Name: DoorButton
   m_TagString: RightDoorButton
@@ -6052,6 +6053,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163650460}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1163650466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163650460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd267bfe9a3a0af469862bca18830f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonRenderer: {fileID: 1163650464}
+  door: {fileID: 1056327008}
 --- !u!1 &1172613993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6678,6 +6693,7 @@ GameObject:
   - component: {fileID: 1318423738}
   - component: {fileID: 1318423737}
   - component: {fileID: 1318423736}
+  - component: {fileID: 1318423740}
   m_Layer: 0
   m_Name: DoorButton
   m_TagString: LeftDoorButton
@@ -6771,6 +6787,20 @@ Transform:
   m_Father: {fileID: 1547564708}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318423740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318423735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd267bfe9a3a0af469862bca18830f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonRenderer: {fileID: 1318423737}
+  door: {fileID: 1110315522}
 --- !u!1 &1320712850
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public GameObject tablet;
     public CamSwitcher camSwitcher;
-    public GameObject door;
+    public GameObject leftDoor;
+    public GameObject rightDoor;
 
     [Header("UI")]
     public GameObject tabletUI;
@@ -23,7 +24,8 @@ public class CameraController : MonoBehaviour
     private float xRotation = 0f;
     private bool isTabletOpen = false;
     private bool isMenuOpen = false;
-    private bool isOpen = false;
+    private bool leftDoorIsOpen = false;
+    private bool rightDoorIsOpen = false;
 
     private void Start()
     {
@@ -75,21 +77,37 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             TabletRayHit();
-            DoorButtonRayHit();
+            LeftDoorButtonRayHit();
+            RightDoorButtonRayHit();
         }
     }
 
-    private void DoorButtonRayHit()
+    private void LeftDoorButtonRayHit()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 20f))
         {
-            if (hit.collider.CompareTag("DoorButton"))
+            if (hit.collider.CompareTag("LeftDoorButton"))
             {
-                isOpen = !isOpen;
-                door.GetComponent<Animator>().SetBool("isOpened", isOpen);
+                leftDoorIsOpen = !leftDoorIsOpen;
+                leftDoor.GetComponent<Animator>().SetBool("isOpened", leftDoorIsOpen);
+            }
+        }
+    }
+
+    private void RightDoorButtonRayHit()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 20f))
+        {
+            if (hit.collider.CompareTag("RightDoorButton"))
+            {
+                rightDoorIsOpen = !rightDoorIsOpen;
+                rightDoor.GetComponent<Animator>().SetBool("isOpened", rightDoorIsOpen);
             }
         }
     }

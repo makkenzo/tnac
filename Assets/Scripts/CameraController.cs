@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public GameObject tablet;
     public CamSwitcher camSwitcher;
+    public GameObject door;
 
     [Header("UI")]
     public GameObject tabletUI;
@@ -22,6 +23,7 @@ public class CameraController : MonoBehaviour
     private float xRotation = 0f;
     private bool isTabletOpen = false;
     private bool isMenuOpen = false;
+    private bool isOpen = false;
 
     private void Start()
     {
@@ -72,20 +74,41 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
+            TabletRayHit();
+            DoorButtonRayHit();
+        }
+    }
 
-            if (Physics.Raycast(ray, out hit, 10f)) 
+    private void DoorButtonRayHit()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 20f))
+        {
+            if (hit.collider.CompareTag("DoorButton"))
             {
-                if (hit.collider.CompareTag("Tablet"))
-                {
-                    isTabletOpen = true;
-                    Cursor.lockState = CursorLockMode.None;
-                    playerUI.SetActive(false);
-                    tabletUI.SetActive(true);
+                isOpen = !isOpen;
+                door.GetComponent<Animator>().SetBool("isOpened", isOpen);
+            }
+        }
+    }
 
-                    camSwitcher.cameras[0].gameObject.SetActive(true);
-                }
+    private void TabletRayHit()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 10f))
+        {
+            if (hit.collider.CompareTag("Tablet"))
+            {
+                isTabletOpen = true;
+                Cursor.lockState = CursorLockMode.None;
+                playerUI.SetActive(false);
+                tabletUI.SetActive(true);
+
+                camSwitcher.cameras[0].gameObject.SetActive(true);
             }
         }
     }

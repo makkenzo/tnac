@@ -13,8 +13,11 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public GameObject tablet;
     public CamSwitcher camSwitcher;
+
+    [Header("Doors")]
     public GameObject leftDoor;
     public GameObject rightDoor;
+    public GameObject middleDoor;
 
     [Header("UI")]
     public GameObject tabletUI;
@@ -22,10 +25,13 @@ public class CameraController : MonoBehaviour
     public GameObject pauseUI;
 
     private float xRotation = 0f;
+
     private bool isTabletOpen = false;
     private bool isMenuOpen = false;
+
     private bool leftDoorIsOpen = false;
     private bool rightDoorIsOpen = false;
+    private bool middleDoorIsOpen = false;
 
     private void Start()
     {
@@ -79,6 +85,7 @@ public class CameraController : MonoBehaviour
             TabletRayHit();
             LeftDoorButtonRayHit();
             RightDoorButtonRayHit();
+            MiddleDoorButtonRayHit();
         }
     }
 
@@ -108,6 +115,21 @@ public class CameraController : MonoBehaviour
             {
                 rightDoorIsOpen = !rightDoorIsOpen;
                 rightDoor.GetComponent<Animator>().SetBool("isOpened", rightDoorIsOpen);
+            }
+        }
+    }
+
+    private void MiddleDoorButtonRayHit()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 20f))
+        {
+            if (hit.collider.CompareTag("MiddleDoorButton"))
+            {
+                middleDoorIsOpen = !middleDoorIsOpen;
+                middleDoor.GetComponent<Animator>().SetBool("isOpened", middleDoorIsOpen);
             }
         }
     }

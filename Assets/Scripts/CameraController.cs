@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour
 
     private float xRotation = 0f;
 
-    private bool isTabletOpen = false;
+    public bool isTabletOpen = false;
     private bool isMenuOpen = false;
 
     private bool leftDoorIsOpen = false;

@@ -4,26 +4,58 @@ using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
-    public int energy = 100;
-    public LeftButtonController btnController;
-    public float energyLossRate = 3f;
+    [Header("Buttons")]
+    public ButtonController leftBtnController;
+    public ButtonController rightBtnController;
+    public ButtonController middleBtnController;
 
+    [Header("")]
+    public CameraController tablet;
+
+    public int energy = 100;
+    private float energyLossRate = 5f;
     private float energyLossTimer = 0f;
 
     void Update()
     {
-        if (btnController.doorIsOpen)
+        if (leftBtnController.doorIsOpen)
         {
-            energyLossTimer += Time.deltaTime; // увеличиваем таймер на прошедшее время
-            if (energyLossTimer >= energyLossRate) // если прошло достаточно времени
+            energyLossTimer += Time.deltaTime;
+            if (energyLossTimer >= energyLossRate)
             {
-                energy -= 1; // уменьшаем энергию на 1 единицу
-                Debug.Log(energyLossRate);
-                Debug.Log(energyLossTimer);
-                energyLossTimer = 0f; // сбрасываем таймер
+                energy -= 1;
+                energyLossTimer = 0f;
             }
         }
 
-        //Debug.Log(energy);
+        if (rightBtnController.doorIsOpen)
+        {
+            energyLossTimer += Time.deltaTime;
+            if (energyLossTimer >= energyLossRate)
+            {
+                energy -= 1;
+                energyLossTimer = 0f;
+            }
+        }
+
+        if (middleBtnController.doorIsOpen)
+        {
+            energyLossTimer += Time.deltaTime;
+            if (energyLossTimer >= energyLossRate)
+            {
+                energy -= 1;
+                energyLossTimer = 0f;
+            }
+        }
+
+        if (tablet.isTabletOpen)
+        {
+            energyLossTimer += Time.deltaTime;
+            if (energyLossTimer >= energyLossRate)
+            {
+                energy -= 1;
+                energyLossTimer = 0f;
+            }
+        }
     }
 }

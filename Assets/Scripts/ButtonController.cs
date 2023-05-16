@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftButtonController : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
     public Renderer buttonRenderer;
     public GameObject door;

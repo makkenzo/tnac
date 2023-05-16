@@ -14,6 +14,12 @@ public class TimeController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
+        if (timer >= 10f)
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
         if (timer >= 60f)
         {
             number++;
@@ -23,10 +29,6 @@ public class TimeController : MonoBehaviour
             if (count == 6)
             {
                 SceneManager.LoadScene("Victory");
-                if (timer >= 10f)
-                {
-                    SceneManager.LoadScene("Menu");
-                }
             }
         }
     }

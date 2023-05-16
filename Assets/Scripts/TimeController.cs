@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour
             if (count == 6)
             {
                 SceneManager.LoadScene("Victory");
-                if (timer == 10f)
+                if (timer >= 10f)
                 {
                     SceneManager.LoadScene("Menu");
                 }

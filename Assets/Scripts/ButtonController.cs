@@ -7,7 +7,8 @@ public class LeftButtonController : MonoBehaviour
     public Renderer buttonRenderer;
     public GameObject door;
 
-    private bool doorIsOpen;
+    
+    public bool doorIsOpen;
 
     private void Start()
     {

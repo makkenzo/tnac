@@ -16,7 +16,6 @@ public class EnergyImgSwitch : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_energy.energy);
         UpdateBattery(_energy.energy);
     }
 

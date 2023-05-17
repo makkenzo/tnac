@@ -8,6 +8,7 @@ TagManager:
   - LeftDoorButton
   - RightDoorButton
   - MiddleDoorButton
+  - Aisle
   layers:
   - Default
   - TransparentFX

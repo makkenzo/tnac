@@ -23,7 +23,6 @@ public class EnergyImgSwitch : MonoBehaviour
     public void UpdateBattery(int chargeLevel)
     {
         int level = Mathf.RoundToInt(chargeLevel / 20);
-        //Debug.Log($"{chargeLevel}: {level}");
 
         switch (level)
         {

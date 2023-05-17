@@ -18,6 +18,14 @@ public class Energy : MonoBehaviour
 
     void Update()
     {
+        if (energy <= 0)
+        {
+            leftBtnController.doorIsOpen = false;
+            rightBtnController.doorIsOpen = false;
+            middleBtnController.doorIsOpen = false;
+            tablet.isTabletOpen = false;
+        }
+
         if (leftBtnController.doorIsOpen)
         {
             energyLossTimer += Time.deltaTime;

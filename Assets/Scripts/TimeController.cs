@@ -15,11 +15,6 @@ public class TimeController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= 10f)
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
         if (timer >= 60f)
         {
             number++;

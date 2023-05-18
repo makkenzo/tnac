@@ -362,6 +362,8 @@ MonoBehaviour:
   - {fileID: 313139640}
   - {fileID: 307825859}
   - {fileID: 1230277422}
+  _energy: {fileID: 1855291049}
+  energyLossPos: {fileID: 106357621}
   door1: {fileID: 1318423740}
   door2: {fileID: 1065077373}
   door3: {fileID: 1163650466}
@@ -963,6 +965,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ea0948c06c2cd4faa5f1d79ebb1073, type: 3}
+--- !u!1 &106357620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106357621}
+  m_Layer: 0
+  m_Name: PEnergyLoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &106357621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106357620}
+  m_LocalRotation: {x: -0, y: 0.48766214, z: -0, w: 0.87303245}
+  m_LocalPosition: {x: 171.33, y: 149.23216, z: 16.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1827515283}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 58.374, z: 0}
 --- !u!1 &106748428
 GameObject:
   m_ObjectHideFlags: 0
@@ -12102,6 +12135,7 @@ MonoBehaviour:
   player: {fileID: 593261376}
   tablet: {fileID: 1325333850}
   camSwitcher: {fileID: 640193045}
+  energy: {fileID: 1855291049}
   leftDoor: {fileID: 2011726522}
   rightDoor: {fileID: 2057968442}
   middleDoor: {fileID: 1977775515}
@@ -12815,6 +12849,7 @@ MonoBehaviour:
   buttonRenderer: {fileID: 1065077375}
   door: {fileID: 1977775515}
   doorIsOpen: 0
+  energy: {fileID: 1855291049}
 --- !u!65 &1065077374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14024,6 +14059,7 @@ MonoBehaviour:
   buttonRenderer: {fileID: 1163650464}
   door: {fileID: 2057968442}
   doorIsOpen: 0
+  energy: {fileID: 1855291049}
 --- !u!4 &1165741108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3865077843198234916, guid: e5ea0948c06c2cd4faa5f1d79ebb1073, type: 3}
@@ -15756,6 +15792,7 @@ MonoBehaviour:
   buttonRenderer: {fileID: 1318423737}
   door: {fileID: 2011726522}
   doorIsOpen: 0
+  energy: {fileID: 1855291049}
 --- !u!1 &1320712850
 GameObject:
   m_ObjectHideFlags: 0
@@ -20150,6 +20187,7 @@ Transform:
   - {fileID: 313139640}
   - {fileID: 307825859}
   - {fileID: 1230277422}
+  - {fileID: 106357621}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20798,6 +20836,7 @@ MonoBehaviour:
   middleBtnController: {fileID: 1065077373}
   tablet: {fileID: 963194229}
   energy: 100
+  canInteract: 1
 --- !u!1 &1860310869
 GameObject:
   m_ObjectHideFlags: 0

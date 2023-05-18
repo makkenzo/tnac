@@ -13,17 +13,21 @@ public class Energy : MonoBehaviour
     public CameraController tablet;
 
     public int energy = 100;
+    public bool canInteract = true;
+
     private float energyLossRate = 5f;
     private float energyLossTimer = 0f;
 
     void Update()
     {
-        if (energy <= 0)
+        if (energy < 95f)
         {
-            leftBtnController.doorIsOpen = false;
-            rightBtnController.doorIsOpen = false;
-            middleBtnController.doorIsOpen = false;
-            tablet.isTabletOpen = false;
+            leftBtnController.door.GetComponent<Animator>().SetBool("isOpened", false);
+            rightBtnController.door.GetComponent<Animator>().SetBool("isOpened", false);
+            middleBtnController.door.GetComponent<Animator>().SetBool("isOpened", false);
+
+            canInteract = false;
+            tablet.OffTabletAndCameras();
         }
 
         if (leftBtnController.doorIsOpen)

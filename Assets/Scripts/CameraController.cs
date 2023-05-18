@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public GameObject tablet;
     public CamSwitcher camSwitcher;
+    public Energy energy;
 
     [Header("Doors")]
     public GameObject leftDoor;
@@ -56,11 +57,7 @@ public class CameraController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                isTabletOpen = false;
-
-                OffTabletMenu();
-
-                camSwitcher.TurnOffAllCameras();
+                OffTabletAndCameras();
             }
             return;
         }
@@ -82,10 +79,13 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TabletRayHit();
-            LeftDoorButtonRayHit();
-            RightDoorButtonRayHit();
-            MiddleDoorButtonRayHit();
+            if (energy.canInteract)
+            {
+                TabletRayHit();
+                LeftDoorButtonRayHit();
+                RightDoorButtonRayHit();
+                MiddleDoorButtonRayHit();
+            }
         }
     }
 
@@ -159,6 +159,15 @@ public class CameraController : MonoBehaviour
         isMenuOpen = state;
 
         Cursor.lockState = state == false ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    public void OffTabletAndCameras()
+    {
+        isTabletOpen = false;
+
+        OffTabletMenu();
+
+        camSwitcher.TurnOffAllCameras();
     }
 
     private void OffTabletMenu()

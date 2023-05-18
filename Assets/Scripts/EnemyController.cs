@@ -26,25 +26,29 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(currentWaypoint.name);
         if (currentWaypoint.name == "P3.1" && !door1.doorIsOpen)
         {
             timer += Time.deltaTime;
+            Debug.Log(timer);
 
-            if (timer >= 3f)
+            if (timer >= 10f)
                 Invoke("LoadDeadScene", 0f);
         }
         else if (currentWaypoint.name == "P4.1" && !door3.doorIsOpen)
         {
             timer += Time.deltaTime;
+            Debug.Log(timer);
 
-            if (timer >= 3f)
+            if (timer >= 10f)
                 Invoke("LoadDeadScene", 0f);
         }
         else if (currentWaypoint.name == "P1.1" && !door2.doorIsOpen)
         {
             timer += Time.deltaTime;
+            Debug.Log(timer);
 
-            if (timer >= 3f)
+            if (timer >= 10f)
                 Invoke("LoadDeadScene", 0f);
         }
     }
@@ -64,6 +68,8 @@ public class EnemyController : MonoBehaviour
                 {
                     transform.position = farPos.position;
                     transform.rotation = farPos.rotation;
+
+                    currentWaypoint = farPos;
                 }
                 isNearbyPosition = true;
             }
@@ -75,6 +81,8 @@ public class EnemyController : MonoBehaviour
                 {
                     transform.position = nearbyPos.position;
                     transform.rotation = nearbyPos.rotation;
+
+                    currentWaypoint = nearbyPos;
                 }
             }
         }
@@ -83,14 +91,19 @@ public class EnemyController : MonoBehaviour
             transform.position = currentWaypoint.position;
             transform.rotation = currentWaypoint.rotation;
             isNearbyPosition = false;
+
+            currentWaypoint = transform;
         }
     }
 
     private Transform GetAisleFarPosition(Transform aisle)
     {
+        string roomName = aisle.name.Substring(0, aisle.name.IndexOf('.'));
+        string farPositionName = roomName + ".2";
+
         foreach (Transform waypoint in waypoints)
         {
-            if (waypoint.name.EndsWith(".2"))
+            if (waypoint.name == farPositionName)
             {
                 return waypoint;
             }

@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
                 Invoke("LoadDeadScene", 0f);
         }
 
-        if (!isDead && _energy.energy <= 95f)
+        if (!isDead && _energy.energy < 1f)
         {
             isDead = true;
             Invoke("SendEnemyToEnergyLossPosition", 5f);

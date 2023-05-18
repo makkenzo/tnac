@@ -13388,7 +13388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d88928e05fc211547bb9696a07dc51ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17252,7 +17252,7 @@ GameObject:
   - component: {fileID: 1433733572}
   - component: {fileID: 1433733573}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: MainLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21170,6 +21170,17 @@ MonoBehaviour:
   leftBtnController: {fileID: 1318423740}
   rightBtnController: {fileID: 1163650466}
   middleBtnController: {fileID: 1065077373}
+  lights:
+  - {fileID: 1072971470}
+  - {fileID: 885183980}
+  - {fileID: 1205766230}
+  - {fileID: 1265909570}
+  - {fileID: 773299406}
+  - {fileID: 1352118440}
+  - {fileID: 940142067}
+  mainLight: {fileID: 1433733573}
+  flickerInterval: 0.1
+  turnOffDelay: 5
   tablet: {fileID: 963194229}
   energy: 100
   canInteract: 1
@@ -22032,7 +22043,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d88928e05fc211547bb9696a07dc51ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

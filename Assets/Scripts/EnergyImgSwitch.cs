@@ -21,35 +21,37 @@ public class EnergyImgSwitch : MonoBehaviour
 
     public void UpdateBattery(int chargeLevel)
     {
-        int level = Mathf.RoundToInt(chargeLevel / 20);
-
-        switch (level)
+        if (chargeLevel > 0)
         {
-            case 0:
-                batteryImage.texture = batteryImages[0];
-                break;
-            case 1:
-                batteryImage.texture = batteryImages[1];
-                break;
-            case 2:
-                batteryImage.texture = batteryImages[2];
-                break;
-            case 3:
-                batteryImage.texture = batteryImages[3];
-                break;
-            case 4:
-                batteryImage.texture = batteryImages[4];
-                break;
-            case 5:
-                batteryImage.texture = batteryImages[5];
-                break;
-            default:
-                break;
+            int level = Mathf.RoundToInt(chargeLevel / 20);
+
+            switch (level)
+            {
+                case 0:
+                    batteryImage.texture = batteryImages[1];
+                    break;
+                case 1:
+                    batteryImage.texture = batteryImages[2];
+                    break;
+                case 2:
+                    batteryImage.texture = batteryImages[3];
+                    break;
+                case 3:
+                    batteryImage.texture = batteryImages[4];
+                    break;
+                case 4:
+                    batteryImage.texture = batteryImages[5];
+                    break;
+                case 5:
+                    batteryImage.texture = batteryImages[5];
+                    break;
+                default:
+                    break;
+            }
         }
-
-        /*for(int i=0; i < batteryImages.Length; i++)
+        else
         {
-            batteryImage.texture = batteryImages[i];
-        }*/
+            batteryImage.texture = batteryImages[0];
+        }
     }
 }

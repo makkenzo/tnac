@@ -9,6 +9,12 @@ public class Energy : MonoBehaviour
     public ButtonController rightBtnController;
     public ButtonController middleBtnController;
 
+    [Header("Light")]
+    public Light[] lights;
+    public Light mainLight;
+    public float flickerInterval = 0.3f;
+    public float turnOffDelay = 3f;
+
     [Header("")]
     public CameraController tablet;
 
@@ -18,9 +24,40 @@ public class Energy : MonoBehaviour
     private float energyLossRate = 5f;
     private float energyLossTimer = 0f;
 
+    private bool isLightOn = true;
+    private float flickerTimer = 0f;
+    private float turnOffTimer = 0f;
+
     void Update()
     {
-        if (energy < 95f)
+        if (energy < 1f && !canInteract)
+        {
+            Debug.Log("мерцыание");
+            flickerTimer += Time.deltaTime;
+            turnOffTimer += Time.deltaTime;
+
+            if (flickerTimer >= flickerInterval)
+            {
+                if (isLightOn)
+                {
+                    mainLight.enabled = false;
+                }
+                else
+                {
+                    mainLight.enabled = true;
+                }
+
+                isLightOn = !isLightOn;
+                flickerTimer = 0f;
+            }
+
+            if (turnOffTimer >= turnOffDelay)
+            {
+                mainLight.enabled = false;
+            }
+        }
+
+        if (energy < 1f && canInteract)
         {
             leftBtnController.door.GetComponent<Animator>().SetBool("isOpened", false);
             rightBtnController.door.GetComponent<Animator>().SetBool("isOpened", false);
@@ -28,6 +65,11 @@ public class Energy : MonoBehaviour
 
             canInteract = false;
             tablet.OffTabletAndCameras();
+
+            foreach (Light light in lights)
+            {
+                light.enabled = false;
+            }
         }
 
         if (leftBtnController.doorIsOpen)

@@ -9488,6 +9488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f625bcb37648674ab3ad1e35eefd6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueButton: {fileID: 0}
+  nightButtons: []
 --- !u!4 &659779439
 Transform:
   m_ObjectHideFlags: 0
@@ -19803,7 +19805,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 659779438}
         m_TargetAssemblyTypeName: MenuControls, Assembly-CSharp
-        m_MethodName: ExitPressed
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
